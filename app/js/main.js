@@ -47,13 +47,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 type: 'bar',
                 styledMode: true,
                 spacingBottom: 25,
-                spacingRight: 100
+                spacingRight: 100,
             }, 
             title: {
                 text: null
             },
             data: {
-                googleSpreadsheetKey: '1YOKb5l2VM4aAB2r20N_1aT_1vEajYrP3U-U3A6lZbC0'
+                googleSpreadsheetKey: '1MjbFTX_9S8aWOG1ZT7kT5wFS3iy0ODsy9bwBl8WhWK4'
             },
             // for bar charts only
             plotOptions: {
@@ -61,29 +61,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     groupPadding: 0.1
                 } 
             },
-            // for line charts only
-            // plotOptions: {
-            //     series: {
-            //         lineWidth: 1,
-            //         // clip: false,
-            //         marker: {
-            //             enabled: false,
-            //             symbol: 'circle',
-            //             fillColor: '#ffffff',
-            //             states: {
-            //                 hover: {
-            //                     fillColor: '#ffffff'
-            //                 }
-            //             }
-            //         }
-            //     }
-            // },
             legend: {
-                align: 'right',
-                symbolRadius: 0,
-                verticalAlign: 'top',
-                x: 10,
-                itemMarginTop: -10
+                enabled: false
             },
             xAxis: {
                 labels: {
@@ -98,14 +77,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 labels: {
                     useHTML: true,
                     overflow: 'allow'
-                }
+                },
+                max: 30000,
+                min: -20000,
+                tickAmount: 6
             },
             credits: {
                 enabled: false
             },
             tooltip: {
                 shadow: false,
-                padding: 10
+                padding: 10,
+                formatter: function () {
+                    if (this.y < 0) {
+                        let positiveValue = (this.y)*-1;
+                        return '-$' + (positiveValue).toLocaleString();
+                    } else {
+                        return '$'+(this.y).toLocaleString();
+                    }
+                }
             },
             responsive: {
                 rules: [{

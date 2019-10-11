@@ -65,6 +65,7 @@
   .highcharts-axis-line {
     fill: none;
     stroke: $slate-secondary-6;
+    display: none;
   }
   
   .highcharts-yaxis .highcharts-axis-line {
@@ -85,8 +86,10 @@
     fill: $slate-secondary-5;
     // use this to change the axis label
     & span:first-child {
-      &:after {
-        content: "%";
+      visibility: hidden;
+      &:before {
+        visibility: visible;
+        content: "-$20k";
     }
     }
   }
@@ -94,6 +97,9 @@
   .highcharts-grid-line {
     fill: none;
     stroke: $slate-secondary-3;
+    &:nth-child(3) {
+      stroke: $slate-primary;
+    }
   }
   
   .highcharts-xaxis-grid .highcharts-grid-line {
