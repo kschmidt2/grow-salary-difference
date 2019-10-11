@@ -50,9 +50,7 @@ $breakpoint-lg: 717px;
     width: 100%;
     height: 300px;
     margin-top: -10px;
-    @include sm-md-xl {
-      height: 400px;
-    }
+
   }
 
   & .grow-logo {
